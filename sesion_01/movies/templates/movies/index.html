@@ -1,0 +1,28 @@
+{% load static %}
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <title>Mi primer plantilla</title>
+</head>
+<body>
+  <header>
+    <h1>Hola mundo</h1>
+    {% if number > 5 %}
+    <p>Buenos días</p>
+    {% else %}
+    <p>Buenos tardes</p>
+    {% endif %}
+  </header>
+  <section>
+    <h2>Lista de compras</h2>
+    <ul>
+      {% for item in items %}
+      <li>{{ item }}</li>
+      {% endfor %}  
+    </ul>
+  </section>
+</body>
+</html>
