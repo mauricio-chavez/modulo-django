@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear</title>
+</head>
+<body>
+  <header>
+    <h1>Crear una película</h1>
+    {% if movie %}
+    <p>Se creo la película {{ movie.name }}</p>
+    {% else %}
+    <p>Ingresa la información de la película</p>
+    {% endif %}
+  </header>
+  <section>
+    <form action="{% url 'movies:create' %}" method="POST">
+      {% csrf_token %}
+      <div>
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" id="name" required />
+      </div>
+      <div>
+        <label for="year">Año:</label>
+        <input type="number" name="year" id="year" required />
+      </div>
+      <div>
+        <label for="sinopsis">Sinopsis:</label>
+        <textarea name="sinopsis" id="sinopsis" cols="30" rows="10"></textarea>
+      </div>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+</body>
+</html>

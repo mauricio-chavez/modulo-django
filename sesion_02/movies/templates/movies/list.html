@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Movies</title>
+</head>
+<body>
+  <header>
+    <h1>Peliculas</h1>
+    <a href="{% url 'users:logout' %}">Cerrar sesión</a>
+  </header>
+  <section>
+    <ul>
+      {% for movie in movies %}
+      <li>{{ movie.name }} por {{ movie.director.name }} en el {{ movie.year }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+</body>
+</html>
