@@ -1,11 +1,11 @@
 """
-Django settings for cancionero project.
+Django settings for autenticacion project.
 """
 
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = '7q2z=zuoftstxrvtgqle&)ynmd^r^ba^m0rrj-xe4lvks9pdan'
+SECRET_KEY = 'vt+3(-tjkw(lr1#1_x2l2r4u+e8d2hg5u)qe-n&u2ot&*8k$9m'
 DEBUG = True
 ALLOWED_HOSTS = []
 
@@ -19,7 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'canciones',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -32,12 +32,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'cancionero.urls'
+ROOT_URLCONF = 'autenticacion.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -50,7 +52,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'cancionero.wsgi.application'
+WSGI_APPLICATION = 'autenticacion.wsgi.application'
 
 
 # Database
@@ -58,24 +60,8 @@ WSGI_APPLICATION = 'cancionero.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-
-        # Postgres
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'postgres',
-        # 'USER': 'postgres',
-        # 'PASSWORD': 'mysecretpassword',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
-
-        # MariaDB or MySQL
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cancionero',
-        'USER': 'bedu',
-        'PASSWORD': 'bedu',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -102,9 +88,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'es-MX'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Mexico_City'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -118,5 +104,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = 'media/'
+# Authentication
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'users:success'
+LOGOUT_REDIRECT_URL = 'users:login'

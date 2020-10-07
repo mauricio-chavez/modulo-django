@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Crear cuenta</title>
+{% endblock title %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="title">Crear cuenta</h1>
+    
+    {% for error in form.non_field_errors %}
+    <div class="notification is-danger is-light">
+      {{ error }}
+    </div>
+    {% endfor %}
+      
+    <form method="post">
+      {% csrf_token %}
+      <!-- {{ form.as_p }} -->
+
+      <div class="field">
+        <div class="control">
+          <input class="input {% if form.username.errors %}is-danger{% endif %}" type="text" {% if form.errors %}value="{{ form.username.value }}"{% endif %}" name="username" placeholder="Usuario" maxlength="255" required />
+        </div>
+        {% for error in form.username.errors %}
+        <p class="help is-danger">{{ error }}</p>
+        {% endfor %}    
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input class="input {% if form.email.errors %}is-danger{% endif %}" type="email" {% if form.errors %}value="{{ form.email.value }}"{% endif %} name="email" placeholder="Correo Electrónico" maxlength="255" required />
+        </div>
+        {% for error in form.email.errors %}
+        <p class="help is-danger">{{ error }}</p>
+        {% endfor %}    
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" {% if form.errors %}value="{{ form.first_name.value }}"{% endif %} name="first_name" placeholder="Nombre(s)" maxlength="255" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" {% if form.errors %}value="{{ form.last_name.value }}"{% endif %} name="last_name" placeholder="Apellido(s)" maxlength="255" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input class="input" type="password"  name="password" placeholder="Contraseña" maxlength="255" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input class="input" type="password"  name="password_confirmation" placeholder="Confirmación de contraseña" maxlength="255" required />
+        </div>
+      </div>
+      
+      <button class="button is-link mt-5" type="submit">Crear Cuenta</button>
+    </form>
+  </div>
+</section>
+{% endblock content %}

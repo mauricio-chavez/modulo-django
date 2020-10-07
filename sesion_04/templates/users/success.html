@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Inicio exitoso de sesión</title>
+{% endblock title %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="title">
+      ¡Hola, {{ request.user }}!
+    </h1>
+    <p class="subtitle has-text-success">
+      Has iniciado sesión correctamente
+    </p>
+    <a role="button" class="button is-danger" href="{% url 'users:logout' %}">Cerrar sesión</a>
+  </div>
+</section>
+{% endblock content %}

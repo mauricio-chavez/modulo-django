@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Iniciar Sesión</title>
+{% endblock title %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="title">Iniciar sesión</h1>
+    <form method="post">
+      {% csrf_token %}
+      <input class="input" type="text" name="username" placeholder="Usuario" required />
+      <input class="input" type="password"  name="password" placeholder="Contraseña" required />
+      <p><small class="has-text-danger">{{ error }}</small></p>
+      <button class="button is-link mt-5" type="submit">Iniciar sesión</button>
+    </form>
+  </div>
+</section>
+{% endblock content %}
