@@ -10,5 +10,4 @@ router.register(r'movies', views.MoviesViewset, basename='movie')
 router.register(r'directors', views.DirectorViewset, basename='director')
 
 
-print(router.urls)
 urlpatterns = router.urls

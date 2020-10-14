@@ -1,0 +1,16 @@
+type Director {
+  name: String
+}
+
+type Movie {
+  name: String
+  director: Director
+}
+
+type Query {
+  getAllMovies: [Movie]
+}
+
+type Mutation {
+  createMovie(name: String): Movie
+}

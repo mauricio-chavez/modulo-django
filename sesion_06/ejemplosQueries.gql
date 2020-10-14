@@ -1,0 +1,21 @@
+# Query
+query {
+  getTrack(id: 1) {
+    name
+    artist {
+      name
+      birthday
+    }
+  }
+}
+
+# Mutation
+mutation {
+  createAlbum(name: "Birds in the Trap Sing McKnight" releaseYear: 2016) {
+    album {
+      id
+      name
+      releaseYear
+    }
+  }
+}
