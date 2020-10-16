@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="title">Bedu Movies</h1>
+    <p class="subtitle">Lista de películas</p>
+    <div class="content">
+      <ul>  
+        {% for movie in movie_list %}
+          <li>{{ movie.name }} de <strong>{{ movie.director }}</strong></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock content %}
